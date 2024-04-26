@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [unreleased]
 
+## [0.2.0] - 2024-04-26
+
+### Added
+
+- Added files field to npm package
+- Added keywords field to npm package
+
 ## [0.1.1] - 2024-04-26
 
 ### Added
@@ -19,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial public release
 
-[unreleased]: https://github.com/harmony7/hono-fastly-static/compare/v0.1.1...HEAD
+[unreleased]: https://github.com/harmony7/hono-fastly-static/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/harmony7/hono-fastly-static/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/harmony7/hono-fastly-static/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/harmony7/hono-fastly-static/releases/tag/v0.1.0
