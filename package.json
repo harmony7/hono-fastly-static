@@ -2,8 +2,15 @@
   "name": "@h7/hono-fastly-static",
   "version": "0.1.0",
   "description": "Serve Static Files on Fastly Compute with Hono",
-  "author": "Katsuyuki Omuro (harmony7@pex2.jp)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harmony7/hono-fastly-static.git"
+  },
+  "author": {
+    "name": "Katsuyuki Omuro",
+    "email": "harmony7@pex2.jp"
+  },
   "type": "module",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
