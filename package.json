@@ -29,5 +29,13 @@
   },
   "devDependencies": {
     "typescript": "^5.4.5"
-  }
+  },
+  "files": [
+    "build/**/*.js",
+    "build/**/*.js.map",
+    "build/**/*.d.ts",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
+  ]
 }
