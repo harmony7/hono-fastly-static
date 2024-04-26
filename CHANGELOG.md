@@ -7,11 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [unreleased]
 
+## [0.1.1] - 2024-04-26
+
+### Added
+
+- Added repository field to npm package
+
 ## [0.1.0] - 2024-04-26
 
 ### Added
 
 - Initial public release
 
-[unreleased]: https://github.com/harmony7/hono-fastly-static/compare/v0.1.0...HEAD
+[unreleased]: https://github.com/harmony7/hono-fastly-static/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/harmony7/hono-fastly-static/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/harmony7/hono-fastly-static/releases/tag/v0.1.0
