@@ -1,0 +1,26 @@
+{
+  "name": "@h7/hono-fastly-static",
+  "version": "0.1.0",
+  "description": "Serve Static Files on Fastly Compute with Hono",
+  "author": "Katsuyuki Omuro (harmony7@pex2.jp)",
+  "license": "MIT",
+  "type": "module",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "scripts": {
+    "prepack": "npm run build",
+    "build": "tsc -p tsconfig.build.json",
+    "clean": "rm -rf build"
+  },
+  "dependencies": {
+    "@fastly/compute-js-static-publish": "^6.1.0",
+    "hono": "^4.2.7"
+  },
+  "peerDependencies": {
+    "@fastly/compute-js-static-publish": "^6.1.0",
+    "hono": "^4.2.7"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}
