@@ -1,6 +1,6 @@
 {
   "name": "@h7/hono-fastly-static",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Serve Static Files on Fastly Compute with Hono",
   "license": "MIT",
   "repository": {
