@@ -13,22 +13,26 @@
   },
   "type": "module",
   "main": "./build/index.js",
+  "exports": {
+    ".": {
+      "types": "./build/index.d.ts",
+      "import": "./build/index.js"
+    }
+  },
   "types": "./build/index.d.ts",
   "scripts": {
     "prepack": "npm run build",
     "build": "tsc -p tsconfig.build.json",
     "clean": "rm -rf build"
   },
-  "dependencies": {
-    "@fastly/compute-js-static-publish": "^6.1.0",
-    "hono": "^4.2.7"
+  "devDependencies": {
+    "@fastly/compute-js-static-publish": "^7.0.0",
+    "hono": "^4.9.5",
+    "typescript": "^5.4.5"
   },
   "peerDependencies": {
-    "@fastly/compute-js-static-publish": "^6.1.0",
-    "hono": "^4.2.7"
-  },
-  "devDependencies": {
-    "typescript": "^5.4.5"
+    "@fastly/compute-js-static-publish": "^6.0.0 || ^7.0.0",
+    "hono": "^4.0.0"
   },
   "files": [
     "build/**/*.js",

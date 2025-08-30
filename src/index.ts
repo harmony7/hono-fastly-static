@@ -25,7 +25,7 @@ export function serveStatic(options: ServeStaticOptions) {
 
     const pathname = new URL(reqPath, base).pathname;
 
-    const asset = server.getMatchingAsset(pathname);
+    const asset = await server.getMatchingAsset(pathname);
     if (asset == null) {
       await next();
       return;
