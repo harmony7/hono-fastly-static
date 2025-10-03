@@ -1,4 +1,4 @@
-import { type Context, type Next } from 'hono';
+import { createMiddleware } from 'hono/factory';
 import { type PublisherServer } from '@fastly/compute-js-static-publish';
 
 export type ServeStaticOptions = {
@@ -16,9 +16,9 @@ export function serveStatic(options: ServeStaticOptions) {
   }
   const base = new URL(root, 'https://www.example.com/');
 
-  return async (context: Context, next: Next) => {
+  return createMiddleware(async (c, next) => {
 
-    let reqPath = options.path ?? context.req.path;
+    let reqPath = options.path ?? c.req.path;
     if (reqPath.startsWith('/')) {
       reqPath = '.' + reqPath;
     }
@@ -31,6 +31,8 @@ export function serveStatic(options: ServeStaticOptions) {
       return;
     }
 
-    return await server.serveAsset(context.req.raw, asset, { cache: 'never' });
-  };
+    c.res = undefined;
+    c.res = await server.serveAsset(c.req.raw, asset, { cache: 'never' });
+
+  });
 }

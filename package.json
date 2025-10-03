@@ -1,15 +1,15 @@
 {
-  "name": "@h7/hono-fastly-static",
-  "version": "0.3.0",
-  "description": "Serve Static Files on Fastly Compute with Hono",
+  "name": "@fastly/hono-compute-js-static-publish",
+  "version": "0.4.0",
+  "description": "Serve files from Fastly Compute Static Publisher on Hono",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/harmony7/hono-fastly-static.git"
+    "url": "git+https://github.com/fastly/hono-compute-js-static-publish.git"
   },
   "author": {
     "name": "Katsuyuki Omuro",
-    "email": "harmony7@pex2.jp"
+    "email": "komuro@fastly.com"
   },
   "type": "module",
   "main": "./build/index.js",
@@ -40,7 +40,8 @@
     "build/**/*.d.ts",
     "LICENSE",
     "README.md",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "SECURITY.md"
   ],
   "keywords": [
     "hono",

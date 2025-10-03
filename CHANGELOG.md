@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [unreleased]
 
+### Changed
+
+- BREAKING: Moved to `@fastly` scope
+
+## [0.3.0] - 2024-08-30
+
+### Added
+
+- Update for @fastly/compute-js-static-publish v7
+
 ## [0.2.0] - 2024-04-26
 
 ### Added
@@ -26,7 +36,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial public release
 
-[unreleased]: https://github.com/harmony7/hono-fastly-static/compare/v0.2.0...HEAD
-[0.2.0]: https://github.com/harmony7/hono-fastly-static/compare/v0.1.1...v0.2.0
-[0.1.1]: https://github.com/harmony7/hono-fastly-static/compare/v0.1.0...v0.1.1
-[0.1.0]: https://github.com/harmony7/hono-fastly-static/releases/tag/v0.1.0
+[unreleased]: https://github.com/harmony7/hono-compute-js-static-publish/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/harmony7/hono-compute-js-static-publish/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/harmony7/hono-compute-js-static-publish/compare/v0.1.1...v0.2.0
+[0.1.1]: https://github.com/harmony7/hono-compute-js-static-publish/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/harmony7/hono-compute-js-static-publish/releases/tag/v0.1.0

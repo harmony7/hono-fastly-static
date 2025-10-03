@@ -1,12 +1,12 @@
-# Hono Static Adapter for Fastly Compute
+# Compute Static Publisher for Hono
 
-by Katsuyuki Omuro
+> NOTE: `@fastly/hono-compute-js-static-publish` is provided as a Fastly Labs product. Visit the [Fastly Labs](https://www.fastlylabs.com/) site for terms of use.
 
-`@h7/hono-fastly-static` is an Adapter for [Hono](https://hono.dev) to allow your program to serve static files under [Fastly Compute](https://www.fastly.com/products/edge-compute). It leverages the `PublisherServer` from [`@fastly/compute-js-static-publish`](https://www.npmjs.com/package/@fastly/compute-js-static-publish).
+`@fastly/hono-compute-js-static-publish` is a utility for [Hono](https://hono.dev) to allow your program to serve static files under [Fastly Compute](https://www.fastly.com/products/edge-compute). It leverages the `PublisherServer` from [`@fastly/compute-js-static-publish`](https://www.npmjs.com/package/@fastly/compute-js-static-publish).
 
 Works with:
 * Hono v4.x
-* compute-js-static-publish v6.x and v7.x
+* [@fastly/compute-js-static-publish](https://www.npmjs.com/package/@fastly/compute-js-static-publish) v6.x and v7.x
 
 ## Example
 
@@ -16,7 +16,7 @@ Works with:
 import { Hono } from 'hono/quick'
 import { fire } from 'hono/service-worker'
 
-import { serveStatic } from '@h7/hono-fastly-static'
+import { serveStatic } from '@fastly/hono-compute-js-static-publish'
 import { PublisherServer } from '@fastly/compute-js-static-publish'
 import rc from '../static-publish.rc.js'
 const staticPublisherServer = PublisherServer.fromStaticPublishRc(rc)
@@ -39,7 +39,7 @@ fire(app)
 import { Hono } from 'hono/quick'
 import { fire } from 'hono/service-worker'
 
-import { serveStatic } from '@h7/hono-fastly-static'
+import { serveStatic } from '@fastly/hono-compute-js-static-publish'
 import { getServer } from '../static-publisher/statics.js'
 
 const app = new Hono()
@@ -63,7 +63,7 @@ fire(app)
 Once you have [set up a Hono project for Fastly Compute](https://hono.dev/getting-started/fastly), add this Adapter, the Fastly CLI, and the Static Publisher library to your application:
 
 ```
-npm install @h7/hono-fastly-static @fastly/cli @fastly/compute-js-static-publish
+npm install @fastly/hono-compute-js-static-publish @fastly/cli @fastly/compute-js-static-publish
 ```
 
 These directions assume your static files exist directly under the `./assets` subdirectory of your Fastly Compute application.
@@ -82,7 +82,7 @@ You will need to add and modify some files at the root of your project.
     
     export default rc;
     ```
-    This sets up the Static Publisher to use a KV Store named `site-content` and to place generated temporary files in the `./static-publisher` subdirectory. The other fields are not used in `@h7/hono-fastly-static` but are required fields.
+    This sets up the Static Publisher to use a KV Store named `site-content` and to place generated temporary files in the `./static-publisher` subdirectory. The other fields are not used in `@fastly/hono-compute-js-static-publish` but are required fields.
 
     > [!TIP]
     > Add `./static-publisher/` to your `.gitignore` as these files will be regenerated on the build.
@@ -133,7 +133,7 @@ Finally, modify your application's `src/index.ts` file:
 import { Hono } from 'hono/quick'
 import { fire } from 'hono/service-worker'
 
-import { serveStatic } from '@h7/hono-fastly-static'
+import { serveStatic } from '@fastly/hono-compute-js-static-publish'
 import { PublisherServer } from '@fastly/compute-js-static-publish'
 import rc from '../static-publish.rc.js'
 const staticPublisherServer = PublisherServer.fromStaticPublishRc(rc)
@@ -181,6 +181,16 @@ npm run fastly:publish       # upload your static files
 
 📘 For more on Compute-JS Static Publisher:  
 [https://github.com/fastly/compute-js-static-publish](https://github.com/fastly/compute-js-static-publish)
+
+## Issues
+
+If you encounter any non-security-related bug or unexpected behavior, please [file an issue][bug] using the bug report template.
+
+[bug]: https://github.com/fastly/hono-compute-js-static-publish/issues/new?labels=bug
+
+### Security issues
+
+Please see our [SECURITY.md](SECURITY.md) for guidance on reporting security-related issues.
 
 ## License
 
