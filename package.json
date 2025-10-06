@@ -1,6 +1,6 @@
 {
   "name": "@fastly/hono-compute-js-static-publish",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Serve files from Fastly Compute Static Publisher on Hono",
   "license": "MIT",
   "repository": {
