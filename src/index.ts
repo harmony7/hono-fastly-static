@@ -1,9 +1,12 @@
 import { createMiddleware } from 'hono/factory';
-import { type PublisherServer } from '@fastly/compute-js-static-publish';
+import { PublisherServer, type StaticPublishRc, type PublishContentConfig } from '@fastly/compute-js-static-publish';
 
-export type ServeStaticOptions = {
+export type ServeStaticMiddlewareOptions = {
   path?: string,
   root?: string,
+};
+
+export type ServeStaticOptions = ServeStaticMiddlewareOptions & {
   staticPublisherServer: PublisherServer,
 };
 
@@ -36,3 +39,14 @@ export function serveStatic(options: ServeStaticOptions) {
 
   });
 }
+
+export function fromPublisherServer(server: PublisherServer) {
+  return (options: ServeStaticMiddlewareOptions) =>
+    serveStatic({ ...options, staticPublisherServer: server });
+}
+
+export function fromStaticPublishRc(rc: StaticPublishRc) {
+  return fromPublisherServer(PublisherServer.fromStaticPublishRc(rc));
+}
+
+export { PublisherServer, type StaticPublishRc, type PublishContentConfig };

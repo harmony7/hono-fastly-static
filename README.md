@@ -16,10 +16,9 @@ Works with:
 import { Hono } from 'hono/quick'
 import { fire } from 'hono/service-worker'
 
-import { serveStatic } from '@fastly/hono-compute-js-static-publish'
-import { PublisherServer } from '@fastly/compute-js-static-publish'
+import { fromStaticPublishRc } from '@fastly/hono-compute-js-static-publish'
 import rc from '../static-publish.rc.js'
-const staticPublisherServer = PublisherServer.fromStaticPublishRc(rc)
+const serveStatic = fromStaticPublishRc(rc)
 
 const app = new Hono()
 
@@ -27,8 +26,8 @@ app.get('/', (c) => {
   return c.text('Hello Hono!')
 })
 
-app.get('/favicon.ico', serveStatic({ path: './favicon.ico', staticPublisherServer }))
-app.get('/static/*', serveStatic({ root: './', staticPublisherServer }))
+app.get('/favicon.ico', serveStatic({ path: './favicon.ico' }))
+app.get('/static/*', serveStatic({ root: './' }))
 
 fire(app)
 ```
@@ -39,18 +38,18 @@ fire(app)
 import { Hono } from 'hono/quick'
 import { fire } from 'hono/service-worker'
 
-import { serveStatic } from '@fastly/hono-compute-js-static-publish'
+import { fromPublisherServer } from '@fastly/hono-compute-js-static-publish'
 import { getServer } from '../static-publisher/statics.js'
+const serveStatic = fromPublisherServer(getServer())
 
 const app = new Hono()
 
 app.get('/', (c) => {
   return c.text('Hello Hono!')
-});
+})
 
-const staticPublisherServer = getServer()
-app.get('/favicon.ico', serveStatic({ path: './favicon.ico', staticPublisherServer }))
-app.get('/static/*', serveStatic({ root: './', staticPublisherServer }))
+app.get('/favicon.ico', serveStatic({ path: './favicon.ico' }))
+app.get('/static/*', serveStatic({ root: './' }))
 
 fire(app)
 ```
@@ -60,10 +59,10 @@ fire(app)
 > [!NOTE]
 > The instructions below are for @fastly/compute-js-static-publish v7.
 
-Once you have [set up a Hono project for Fastly Compute](https://hono.dev/getting-started/fastly), add this Adapter, the Fastly CLI, and the Static Publisher library to your application:
+Once you have [set up a Hono project for Fastly Compute](https://hono.dev/getting-started/fastly), add this library and the Static Publisher library to your application:
 
 ```
-npm install @fastly/hono-compute-js-static-publish @fastly/cli @fastly/compute-js-static-publish
+npm install @fastly/hono-compute-js-static-publish @fastly/compute-js-static-publish
 ```
 
 These directions assume your static files exist directly under the `./assets` subdirectory of your Fastly Compute application.
@@ -72,7 +71,7 @@ You will need to add and modify some files at the root of your project.
 
 * Add `static-publish.rc.js`
     ```javascript
-    /** @type {import('@fastly/compute-js-static-publish').StaticPublishRc} */
+    /** @type {import('@fastly/hono-compute-js-static-publish').StaticPublishRc} */
     const rc = {
         kvStoreName: "site-content",
         publishId: "default",
@@ -89,7 +88,7 @@ You will need to add and modify some files at the root of your project.
 
 * Add `publish-content.config.js`
     ```javascript
-    /** @type {import('@fastly/compute-js-static-publish').PublishContentConfig} */
+    /** @type {import('@fastly/hono-compute-js-static-publish').PublishContentConfig} */
     const config = {
         rootDir: './assets'
     };
@@ -125,18 +124,16 @@ You will need to add and modify some files at the root of your project.
     ``` 
 
 Finally, modify your application's `src/index.ts` file:
-1. Import `serveStatic` from this library and `PublisherServer` from `@fastly/compute-js-static-publish`
-2. Import the default constant from `static-publish.rc.js` and pass it to `PublisherServer.fromStaticPublishRc()` to obtain an instance of the Publisher Server.
-3. Call `serveStatic` to instantiate [Hono Middleware](https://hono.dev/guides/middleware), passing in the `PublisherServer` instance obtained above. 
+1. Import `fromStaticPublishRc` from this library
+2. Import the default constant from `static-publish.rc.js` and pass it to `fromStaticPublishRc()` to instantiate the [Hono Middleware](https://hono.dev/guides/middleware). 
 
 ```typescript
 import { Hono } from 'hono/quick'
 import { fire } from 'hono/service-worker'
 
-import { serveStatic } from '@fastly/hono-compute-js-static-publish'
-import { PublisherServer } from '@fastly/compute-js-static-publish'
+import { fromStaticPublishRc } from '@fastly/hono-compute-js-static-publish'
 import rc from '../static-publish.rc.js'
-const staticPublisherServer = PublisherServer.fromStaticPublishRc(rc)
+const serveStatic = fromStaticPublishRc(rc)
 
 const app = new Hono()
 
@@ -144,8 +141,8 @@ app.get('/', (c) => {
   return c.text('Hello Hono!')
 })
 
-app.get('/favicon.ico', serveStatic({ path: './favicon.ico', staticPublisherServer }))
-app.get('/static/*', serveStatic({ root: './', staticPublisherServer }))
+app.get('/favicon.ico', serveStatic({ path: './favicon.ico' }))
+app.get('/static/*', serveStatic({ root: './' }))
 
 fire(app)
 ```
