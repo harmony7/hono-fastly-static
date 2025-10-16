@@ -1,3 +1,9 @@
+# Archived
+
+Ownership of this package has been transferred to Fastly at https://github.com/fastly/hono-compute-js-static-publish.
+
+This repository is no longer maintained, but is left here for reference.
+
 # Hono Static Adapter for Fastly Compute
 
 by Katsuyuki Omuro
